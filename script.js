@@ -54,16 +54,34 @@ const PROJECTS = {
     github: 'https://github.com/Md-IdrisUmaeer/Settle-Up',
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'JWT', 'Jest'],
     bullets: [
-      'Debt-simplification algorithm reduces group settlements to the minimum number of transactions',
-      'Real-time balance & settlement sync across every client via Socket.IO — no manual refresh',
-      'Role-based access control for group ownership, including member removal & cascading deletes',
-      'JWT auth, bcrypt password hashing & server-side authorization on every state-changing endpoint',
-      'Core financial logic covered by a 30+ test Jest suite'
+      'Four split modes (equal, percentage, exact, shares) and a greedy O(n log n) debt-simplification algorithm that settles n members in at most n−1 payments',
+      'Balances and settlements sync live across all clients via Socket.IO rooms, with JWT-verified socket handshakes and a group-membership check before any client joins a room',
+      'Role-based authorization on every state-changing endpoint: owner-only member removal and ownership transfer, payer/receiver-only settlement confirmation, and leave/remove/delete blocked until balances are settled',
+      'JWT + bcrypt auth; 30+ Jest and Supertest tests on an in-memory MongoDB covering split math, balance calculation and debt simplification',
+      'Deployed on Vercel, Render and MongoDB Atlas'
     ],
     slides: [
-      { type: 'placeholder', icon: 'settleup', heading: 'Debt simplification', caption: 'Minimum-transaction settlement algorithm' },
+      { type: 'placeholder', icon: 'settleup', heading: 'Debt simplification', caption: 'Settles n members in at most n−1 payments' },
       { type: 'placeholder', icon: 'settleup', heading: 'Real-time sync', caption: 'Socket.IO keeps every client in sync' },
       { type: 'placeholder', icon: 'settleup', heading: 'Secured & tested', caption: 'JWT + bcrypt, 30+ Jest tests' }
+    ]
+  },
+  backend: {
+    title: 'Backend Foundations (SettleUp Prototypes)',
+    tag: 'prototype',
+    live: null,
+    github: 'https://github.com/Md-IdrisUmaeer/backend-practice',
+    stack: ['Node.js', 'Express', 'JWT', 'Socket.IO', 'Jest'],
+    bullets: [
+      'Prototyped SettleUp\'s core backend from scratch as isolated modules',
+      'Debt simplifier that stores money as integer paise to eliminate floating-point drift, covered by Jest tests',
+      'JWT-authenticated real-time server: Express routes validate and persist an expense before broadcasting it to a Socket.IO group room',
+      'Demos of tampered-payload, wrong-secret and expired-token failures'
+    ],
+    slides: [
+      { type: 'placeholder', icon: 'backend', heading: 'Integer paise', caption: 'No floating-point drift in money math' },
+      { type: 'placeholder', icon: 'backend', heading: 'Validate → persist → broadcast', caption: 'Express + Socket.IO group rooms' },
+      { type: 'placeholder', icon: 'backend', heading: 'JWT failure demos', caption: 'Tampered, wrong-secret, expired tokens' }
     ]
   },
   devshelf: {
@@ -73,11 +91,10 @@ const PROJECTS = {
     github: 'https://github.com/Md-IdrisUmaeer/Dev-Shelf',
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'MUI', 'Axios'],
     bullets: [
-      'Browse, search, filter by category & sort community-submitted dev tools, APIs and UI libraries',
-      'RESTful Express/Mongoose API with atomic like/unlike counters via MongoDB\'s $inc operator',
-      'Input sanitization middleware strips MongoDB operator keys, preventing NoSQL injection',
-      'Material UI frontend with client-side URL validation and a submission dialog for new resources',
-      'Persistent like state via localStorage'
+      'MERN developer-resource directory with search, category filters and sorting by newest, oldest or most-liked',
+      'Validated submission form for new tools, APIs and UI libraries',
+      'REST API (Express, Mongoose) for creating, listing and liking resources, using MongoDB\'s atomic $inc operator for like/unlike counters',
+      'Middleware that recursively strips $-prefixed operator keys from request bodies, blocking NoSQL injection via query-operator payloads'
     ],
     slides: [
       { type: 'placeholder', icon: 'devshelf', heading: 'Browse & filter', caption: 'Search, filter by category, sort results' },
@@ -92,10 +109,10 @@ const PROJECTS = {
     github: 'https://github.com/Md-IdrisUmaeer/whos-that-pokemon',
     stack: ['JavaScript', 'HTML', 'CSS', 'PokeAPI'],
     bullets: [
-      'Covers all 151 original Pokémon with live sprites pulled from the public PokeAPI',
-      'Silhouette-reveal guessing mechanic checks input on every keystroke, no submit needed',
-      'Procedural hint system reveals a random subset of letters in the Pokémon\'s name',
-      'Background gradient dynamically recolors based on the Pokémon\'s elemental type(s)'
+      'Dependency-free browser game covering all 151 original Pokémon, with sprites loaded from PokeAPI',
+      'Guesses matched on every keystroke instead of a submit action',
+      'Randomized hint system that reveals about a third of the letters',
+      'Background gradient recolors to match each Pokémon\'s elemental type(s)'
     ],
     slides: [
       { type: 'placeholder', icon: 'pokemon', heading: 'All 151 Pokémon', caption: 'Sprites pulled live from PokeAPI' },
@@ -108,6 +125,7 @@ const PROJECTS = {
 const THUMB_ICONS = {
   settleup: '<svg class="slide-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="26" stroke="white" stroke-opacity=".35" stroke-width="2"/><path d="M20 32h24M20 32l7-7M20 32l7 7M44 32l-7-7M44 32l-7 7" stroke="white" stroke-opacity=".85" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   devshelf: '<svg class="slide-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="14" width="15" height="15" rx="2" stroke="white" stroke-opacity=".85" stroke-width="2.2"/><rect x="35" y="14" width="15" height="15" rx="2" stroke="white" stroke-opacity=".5" stroke-width="2.2"/><rect x="14" y="35" width="15" height="15" rx="2" stroke="white" stroke-opacity=".5" stroke-width="2.2"/><rect x="35" y="35" width="15" height="15" rx="2" stroke="white" stroke-opacity=".85" stroke-width="2.2"/></svg>',
+  backend: '<svg class="slide-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="14" width="36" height="10" rx="2" stroke="white" stroke-opacity=".85" stroke-width="2.2"/><rect x="14" y="27" width="36" height="10" rx="2" stroke="white" stroke-opacity=".6" stroke-width="2.2"/><rect x="14" y="40" width="36" height="10" rx="2" stroke="white" stroke-opacity=".4" stroke-width="2.2"/><circle cx="20" cy="19" r="1.8" fill="white"/><circle cx="20" cy="32" r="1.8" fill="white"/><circle cx="20" cy="45" r="1.8" fill="white"/></svg>',
   pokemon: '<svg class="slide-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="20" stroke="white" stroke-opacity=".85" stroke-width="2.2"/><path d="M12 32h40" stroke="white" stroke-opacity=".85" stroke-width="2.2"/><circle cx="32" cy="32" r="6" fill="white" fill-opacity=".85"/></svg>'
 };
 
@@ -169,9 +187,9 @@ function openModal(key) {
   modalTag.textContent = p.tag;
   modalBullets.innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
   modalStack.innerHTML = p.stack.map(s => `<span class="chip">${s}</span>`).join('');
-  modalLinks.innerHTML = `
-    <a href="${p.live}" target="_blank" rel="noopener">Live demo →</a>
-    <a href="${p.github}" target="_blank" rel="noopener">GitHub ↗</a>`;
+  modalLinks.innerHTML =
+    (p.live ? `<a href="${p.live}" target="_blank" rel="noopener">Live demo →</a>` : '') +
+    `<a href="${p.github}" target="_blank" rel="noopener">GitHub ↗</a>`;
 
   track.innerHTML = p.slides.map(renderSlide).join('');
   dotsWrap.innerHTML = p.slides.map((_, i) => `<button aria-label="Go to slide ${i + 1}"></button>`).join('');

@@ -111,6 +111,10 @@ nav.wrap{
 #hero h1 .accent{color:var(--breeze);}
 #hero p.lede{color:rgba(255,255,255,.82);font-size:1.08rem;max-width:480px;margin-top:20px;}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap;}
+.hero-stats div{display:flex;flex-direction:column;}
+.hero-stats strong{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:#fff;line-height:1.1;}
+.hero-stats span{font-size:.78rem;color:rgba(255,255,255,.65);font-family:'JetBrains Mono',monospace;}
 .btn{
   display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:9px;
   font-weight:600;font-size:.94rem;cursor:pointer;border:1px solid transparent;
@@ -181,7 +185,7 @@ section{padding:80px 0;}
 
 /* ---------- Projects ---------- */
 #projects{background:#fff;}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
 .project-card{
   background:var(--foam);border-radius:var(--radius);overflow:hidden;
   border:1px solid var(--line);display:flex;flex-direction:column;
